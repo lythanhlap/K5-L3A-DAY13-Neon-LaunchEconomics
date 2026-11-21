@@ -5,6 +5,8 @@
 - Họ tên: Nguyễn Văn Huy
 - MSSV: 2A202603432
 - Email: 26ai.huynv6@vinuni.edu.vn
+- GitHub: nvhuy-03
+- Nhóm: Neon · Lớp: L3A · Repo: https://github.com/lythanhlap/K5-L3A-DAY13-Neon-LaunchEconomics
 - Vai trong nhóm: Người gắn nhãn 1, kiêm giữ đồng hồ và theo dõi điều kiện "Xong khi" của từng checkpoint
 
 ## 2. Phần việc phụ trách
@@ -60,7 +62,15 @@
 
 - File: [report/team/bang_chi_phi.md](bang_chi_phi.md). Đầu file có ghi chú đối chiếu, lệch 0% so với đáp án.
 - Đầu ra `python lab13.py` khớp từng dòng với bảng đáp án trong `docs/Lab13_Huong_dan_chi_tiet_buoi_chieu.md` (mục A2, A3, A4, B1–B4).
-- Commit: (điền hash sau khi commit)
+- File: [report/team/bang_loi.md](bang_loi.md): cột "Nhãn người 1" (20 ca), tỉ lệ đồng thuận 18/20 = 90% với người gắn nhãn 2, ba dòng khắc phục ca 1, 7, 3.
+- Commit (tác giả `nvhuy-03`):
+
+  | Commit | Nội dung | Gộp vào `main` |
+  | --- | --- | --- |
+  | `eb7f3fb` | CP1: bảng A1–A4, B1–B4 trong `bang_chi_phi.md`, tạo báo cáo cá nhân | PR #1 |
+  | `313227f` | CP2: bổ sung nhãn `simulated` cho B3, B4 | PR #3 |
+  | `7c626f6` | CP3: gắn nhãn độc lập 20 ca trong `bang_loi.md` | PR #5 |
+  | `d211e79` | CP3: 3 dòng khắc phục (Do người dùng, Hệ thống, Ngữ cảnh) | PR #7 |
 
 ## 5. Công cụ AI đã dùng
 

@@ -13,7 +13,7 @@
 | --: | ------ | ---- | ----- | ------ | ------- |
 |   1 | Lý Thành Lập |  2A202603414    |       |      | Người kiểm số |
 |   2 | Nguyễn Tiến Cường |  2A202603425    | cuongdelldz@gmail.com | cuong-sadboi | Người viết code |
-|   3 | Nguyễn Văn Huy |  2A202603432    |       |        | Người gắn nhãn 1 |
+|   3 | Nguyễn Văn Huy |  2A202603432    |nvhuy2582003@gmail.com | nvhuy-03 | Người gắn nhãn 1 |
 |   4 | Phạm Công Dũng |   2A202603428   |       |        | Người gắn nhãn 2, kiêm giữ hồ sơ |
 
 Bốn vai của lab:
@@ -193,11 +193,14 @@ Ví dụ: `report/team/20241234_NguyenVanAn.md`.
 
 ### Đóng góp cụ thể
 
--
+- CP1: soát `src/lab13.py`, xác nhận tử số tính cả lần chạy lỗi và chia 1.000 trước khi nhân giá. Đối chiếu đáp án: mọi số A2, A3 lệch 0% (ngưỡng 2%).
+- CP1–CP2: điền `bang_chi_phi.md` (A1–A4, B1–B4). Viết xếp hạng B2 (làm lại +51,8% · xem lại +40,7% · lương +23,1%). Viết B3 theo chi phí cả hệ thống (giới hạn 2 lần rẻ nhất, 6.901.220 đ) và B4 (xem lại 100%: 0,98–1,03× của 12.000 đ). Tất cả là số `simulated`.
+- CP3: gắn nhãn độc lập 20 ca (người gắn nhãn 1), đồng thuận với Dũng 18/20 = 90%. Điền 3 dòng khắc phục: ca 1 Do người dùng, ca 7 Hệ thống, ca 3 Ngữ cảnh.
 
 ### Bằng chứng
 
--
+- File: `report/team/bang_chi_phi.md`, `report/team/bang_loi.md` (cột "Nhãn người 1" và 3 dòng khắc phục đầu), `report/team/2A202603432_NguyenVanHuy.md`.
+- Commit: `eb7f3fb` (CP1), `313227f` (CP2), `7c626f6` (gắn nhãn 20 ca), `d211e79` (bảng khắc phục). Gộp vào `main` qua PR #1, #3, #5, #7.
 
 ## PhamCongDung-2A202603428
 
