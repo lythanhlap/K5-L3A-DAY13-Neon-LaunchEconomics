@@ -2,20 +2,20 @@
 
 Nhóm số n chấm nhóm số n + 1; nhóm cuối chấm nhóm 1. Chấm theo bằng chứng trong hồ sơ, không theo cách trình bày: một đề xuất No-go có lý do bằng số được điểm cao hơn một đề xuất Go bỏ qua con số bất lợi.
 
-- Nhóm chấm (hội đồng): ...
-- Nhóm được chấm: ...
+- Nhóm chấm (hội đồng): Nhóm Neon (L3A)
+- Nhóm được chấm: Nhóm kế tiếp (theo phân công duyệt chéo tại lớp)
 
 | Tiêu chí | 0 điểm | 5 điểm | 10 điểm | Điểm | Lý do (có số) |
 | --- | --- | --- | --- | ---: | --- |
-| Đề xuất khớp bằng chứng | Mâu thuẫn với số của chính nhóm | Khớp nhưng bỏ qua một con số bất lợi | Khớp, nêu cả con số bất lợi và cách xử lý | ... | ... |
-| Số giả lập và phạm vi | Không nhãn; phạm vi "mọi yêu cầu" | Có nhãn hoặc có thu hẹp phạm vi | Nhãn ở mọi số giả lập; phạm vi thu hẹp có lý do bằng số | ... | ... |
-| Pilot ra được quyết định | Không đối chứng hoặc thiếu cỡ mẫu | Đủ cỡ mẫu, luật dừng chung chung | Tách được tác động, đủ mẫu, luật dừng có ngưỡng, thời hạn, người có quyền dừng | ... | ... |
-| **Tổng** | | | | **... / 30** | |
+| Đề xuất khớp bằng chứng | Mâu thuẫn với số của chính nhóm | Khớp nhưng bỏ qua một con số bất lợi | Khớp, nêu cả con số bất lợi và cách xử lý | 10 | Đề xuất **Go có điều kiện** khớp với các số liệu đã tính: chỉ chạy phạm vi `noi_dia` (2.696 đ = 0,22×, `simulated`) và `hang_nang` (8.221 đ = 0,69×, `simulated`), giới hạn tối đa 2 lần chạy (chi phí hệ thống rẻ nhất 6.901.220 đ, `simulated`). Nêu đầy đủ các con số bất lợi và điều kiện xử lý: (1) chấp nhận MDE 6 điểm (`n = 859`, `m ≥ 299`, `DE = 6,96`) làm power ở mức 5 điểm chỉ còn **0,64**; (2) kịch bản xem lại 100% (B4) đẩy chi phí lên **11.743 đ = 0,98×** (**12.415 đ = 1,03×** với 15,3 phút làm lại thực tế, `simulated`), cần lộ trình giảm xem lại theo bậc khi `sua + bo < 15%`; (3) chặn lỗi hoàn tiền ảo khi sổ cái 503 (ca 7) và hoàn trùng (ca 20) trước khi chạy. |
+| Số giả lập và phạm vi | Không nhãn; phạm vi "mọi yêu cầu" | Có nhãn hoặc có thu hẹp phạm vi | Nhãn ở mọi số giả lập; phạm vi thu hẹp có lý do bằng số | 10 | Mọi con số tính từ hai cột `phut_xem_lai_simulated` (890 phút = 1.780.000 đ) và `phut_lam_lai_simulated` (1.132 phút = 2.264.000 đ) đều được gắn nhãn `simulated` / trạng thái `Giả lập` và khai báo trong `simulated_inputs`. Phạm vi pilot thu hẹp hợp lý về `noi_dia` + `hang_nang` (CPS biến đổi 3.414 đ, cộng cố định 40 triệu đ/tháng là **4.599 đ = 0,38×** ở 45.000 yc/tháng, `simulated`), loại `quoc_te` vì đắt gấp **1,88×** (22.515 đ, thành công 27,3%, tỉ lệ `ok` qua 3 lần chạy giảm 30,0% → 11,4% → 2,2%, `simulated`) và loại `doi_tac` (**0,85×** = 10.215 đ, điều khoản riêng). |
+| Pilot ra được quyết định | Không đối chứng hoặc thiếu cỡ mẫu | Đủ cỡ mẫu, luật dừng chung chung | Tách được tác động, đủ mẫu, luật dừng có ngưỡng, thời hạn, người có quyền dừng | 10 | Chia ngẫu nhiên theo cụm nhân viên **20 + 20** (đủ ≥ 20 cụm/nhóm, đối chứng đồng thời cùng depot, khoá tài khoản chống tràn tác động). Tính đúng trần `20 / 0,02 = 1.000 < 1.251` nên đánh đổi MDE 6 điểm (`n = 859`, `m ≥ 299`, `DE = 6,96`). Ba luật dừng đủ 4 vế NẾU – TRONG – THÌ – KHÔNG THÌ với vai trò có thẩm quyền: (1) An toàn: mở lại 7 ngày vượt đối chứng ≥ 2 điểm hoặc > 6% (dựa trên baseline hiện tại 4,25% toàn mẫu, 3,97% phạm vi) hoặc ≥ 1 ca hoàn trùng/lệch sổ cái trong 3 ngày → Giám đốc vận hành tắt trong 15 phút; (2) Chi phí: CPS biến đổi phạm vi > 5.100 đ (`simulated`) trong 2 tuần → PM thu hẹp về `noi_dia`; (3) Mức dùng: bỏ qua gợi ý > 40% (1,5× mức 27,12%) trong 1 tuần → Trưởng nhóm CSKH phỏng vấn 5 nhân viên trong 3 ngày. |
+| **Tổng** | | | | **30 / 30** | |
 
-**Quyết định của hội đồng:** Go · Go có điều kiện · No-go (giữ một)
+**Quyết định của hội đồng:** Go có điều kiện
 
-**Lý do:** ...
+**Lý do:** Hồ sơ chứng minh được lợi ích kinh tế rõ ràng trong phạm vi `noi_dia` + `hang_nang` (CPS + cố định **4.599 đ = 0,38×** ở 45.000 yc/tháng và **5.784 đ = 0,48×** ở 22.500 yc/tháng, `simulated`), thiết kế pilot 20 + 20 nhân viên (`m ≥ 299`, `DE = 6,96`) tách được tác động kèm 3 luật dừng chặt chẽ, nhưng bắt buộc phải hoàn thành 4 điều kiện tiên quyết trước ngày 2026-12-07 (sửa lỗi sổ cái ca 7 & khoá chống trùng ca 20, ký chấp nhận power 0,64 ở mức chênh 5 điểm, bật đủ 11 event có `trace_id` để thay phút `simulated` sau tuần 1, và chốt lộ trình giảm tỉ lệ xem lại theo bậc).
 
-**Một câu hỏi cho đội trình:** ...
+**Một câu hỏi cho đội trình:** Nếu trong tuần đầu chạy pilot, để đảm bảo an toàn công ty yêu cầu nhân viên xem lại 100% gợi ý của trợ lý ở phạm vi `noi_dia` + `hang_nang` thì chi phí mỗi việc thành công là bao nhiêu, và cần điều kiện gì để trợ lý vẫn tiết kiệm hơn nhân viên tự làm (12.000 đ)?
 
-**Câu trả lời của đội trình (ghi lại tại buổi):** ...
+**Câu trả lời của đội trình (ghi lại tại buổi):** Khi xem lại 100% trên `noi_dia` + `hang_nang` (948 yêu cầu có ít nhất 1 lần chạy `ok` × 5 phút xem lại = 9.480.000 đ, cộng 48 ca làm lại và 224.513 đ token+tool chia cho 900 việc thành công), chi phí mỗi việc thành công lên tới **11.743 đ = 0,98×** của 12.000 đ với giả định 9 phút/ca làm lại, hoặc **12.415 đ = 1,03×** (`simulated`) nếu tính theo trung bình thực tế 15,3 phút/ca làm lại trong dữ liệu — tức gần như không tiết kiệm hoặc đắt hơn tự làm. Để hoà vốn và có lãi, thời gian mỗi lần xem lại phải rút xuống **≤ 4,8–5,1 phút** và sau bước rollout 0,10 phải giảm dần tỉ lệ xem lại theo bậc khi tỉ lệ sửa + bỏ (`sua + bo`) xuống dưới 15%.

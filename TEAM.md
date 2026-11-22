@@ -218,10 +218,13 @@ Ví dụ: `report/team/20241234_NguyenVanAn.md`.
 - CP1: Viết các câu trả lời phân tích A2 (so sánh 4.472 đ gấp 16,3× hoá đơn 274,7 đ; tỉ trọng làm lại 51,8%, xem lại 40,7%; chi phí cả hệ thống 5.865 đ = 0,49× của 12.000 đ), A3 (loại `quoc_te` 22.515 đ = 1,88× vì chạy lại 3 lần tỉ lệ ok giảm 30,0% → 11,4% → 2,2%; loại `doi_tac` 0,85×) và A4 (cộng cố định 40 triệu đ/tháng cho `noi_dia` + `hang_nang`: 4.599 đ = 0,38× ở 45.000 yc/tháng; 5.784 đ = 0,48× ở 22.500 yc/tháng) trong `report/team/bang_chi_phi.md`. Dựng khung 7 mục và điền Mục 1, Mục 3 vào `report/team/ho_so_launch_v0.md`.
 - CP2: Điền hoàn chỉnh Mục 2 (Ba yếu tố nhạy nhất: 1. Số ca làm lại +51,8% · 2. Tỉ lệ xem lại +40,7% · 3. Lương nhân viên +23,1%; kiểm chứng cộng tuyến tính cặp token ×2 + xem lại ×2 = +46,3%) và cập nhật giới hạn 2 lần chạy (chi phí hệ thống rẻ nhất 6.901.220 đ) vào `report/team/ho_so_launch_v0.md`. Soạn 3 dòng rủi ro kinh tế (làm lại ×2 lên 6.787 đ; xem lại 100% kéo dài lên 11.743 đ = 0,98× hoặc 12.415 đ = 1,03×; khối lượng giảm một nửa làm cố định/việc tăng gấp đôi) trong `report/team/chi_so.md` (mục E2).
 - CP3: Gắn nhãn độc lập 20 ca lỗi (Người gắn nhãn 2), đối chiếu với Huy đạt đồng thuận 18/20 ca (90%), thống nhất và viết quy tắc phân biệt nguyên nhân gốc cho 2 ca lệch (Ca 6 → Do người dùng; Ca 13 → Giới hạn hệ thống); điền phương án phát hiện và khắc phục cho Ca 4 (Giới hạn hệ thống) và Ca 17 (Ngầm) trong `report/team/bang_loi.md`; cập nhật Mục 5 vào `report/team/ho_so_launch_v0.md`.
+- CP4–CP5 & Duyệt chéo: Viết 3 luật dừng đủ 4 vế NẾU – TRONG – THÌ – KHÔNG THÌ (an toàn dựa trên tỉ lệ mở lại 4,25% toàn mẫu / 3,97% phạm vi; chi phí biến đổi phạm vi > 5.100 đ; bỏ qua gợi ý > 40%) trong `report/team/pilot_plan.yaml`. Hoàn thiện đủ 7 mục (bổ sung Mục 4 chỉ số & 11 event, Mục 6 kế hoạch pilot 20 + 20 nhân viên với MDE 6 điểm / power 0,64, Mục 7 rủi ro kinh tế) và đề xuất **Go có điều kiện** (4 điều kiện có vai trò phụ trách và ngày kiểm tra) trong `report/team/ho_so_launch_v0.md`. Hoàn thiện phiếu chấm hội đồng Gate 2a trong `report/team/phieu_cham.md` và soát toàn bộ 6 file hồ sơ trong `report/team/` (đúng tên, không còn `?`, không có từ cấm).
 
 ### Bằng chứng
 
 - Báo cáo cá nhân: [report/team/2A202603428_PhamCongDung.md](report/team/2A202603428_PhamCongDung.md)
-- Hồ sơ launch v0 (Mục 1, 2, 3): [report/team/ho_so_launch_v0.md](report/team/ho_so_launch_v0.md)
-- Câu trả lời phân tích A2, A3, A4: [report/team/bang_chi_phi.md](report/team/bang_chi_phi.md)
-- Bảng rủi ro kinh tế E2: [report/team/chi_so.md](report/team/chi_so.md)
+- Hồ sơ launch v0 (Chủ file, đủ 7 mục + đề xuất Go có điều kiện): [report/team/ho_so_launch_v0.md](report/team/ho_so_launch_v0.md)
+- Phiếu chấm hội đồng Gate 2a (Chủ file): [report/team/phieu_cham.md](report/team/phieu_cham.md)
+- Kế hoạch pilot (3 luật dừng `stop_rules`): [report/team/pilot_plan.yaml](report/team/pilot_plan.yaml)
+- Bảng lỗi (Nhãn người 2, quy tắc ca 6 & 13, khắc phục ca 4 & 17): [report/team/bang_loi.md](report/team/bang_loi.md)
+- Câu trả lời phân tích A2, A3, A4 và bảng rủi ro kinh tế E2: [report/team/bang_chi_phi.md](report/team/bang_chi_phi.md), [report/team/chi_so.md](report/team/chi_so.md)

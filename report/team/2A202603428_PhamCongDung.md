@@ -52,14 +52,35 @@
 - **Điền phương án khắc phục cho 2 loại lỗi phụ trách (Giới hạn hệ thống & Ngầm) trong `report/team/bang_loi.md` và cập nhật Mục 5 hồ sơ:**
   - **Ca 4 (Giới hạn hệ thống):** Phát hiện qua event `handoff_to_staff` với `reason == 'thieu_du_lieu'` (kèm `trace_id`), thống kê theo loại yêu cầu mỗi ngày (ngưỡng cảnh báo > 10%). Khắc phục: giữ cơ chế chuyển nhân viên kèm tóm tắt và loại `quoc_te` (1,88×, thành công 27,3%, `simulated`) khỏi phạm vi pilot. Phụ trách: `PM trợ lý hoàn phí`.
   - **Ca 17 (Ngầm):** Phát hiện qua event `audit_sample_checked` kiểm tra mẫu ngẫu nhiên 100 đơn hoàn/tuần đối chiếu bảng giá hiện hành (ngưỡng cảnh báo ≥ 1% đơn lệch tiền). Khắc phục: tự động xoá cache ngay khi bảng giá cập nhật và ghi `pricing_table_version` vào mọi `trace_id`. Phụ trách: `Kế toán trưởng`.
-  - Cập nhật **Mục 5 (Bảng lỗi và cách khắc phục)** vào `report/team/ho_so_launch_v0.md` với tỉ lệ đồng thuận 90% (18/20), trạng thái `Xong, có bằng chứng`, người phụ trách `Kỹ sư trưởng agent`.
+  - Cập nhật **Mục 5 (Bảng lỗi và cách khắc phục)** vào `report/team/ho_so_launch_v0.md` với tỉ lệ đồng thuận 90% (18/20), đủ 5 loại lỗi (ca 1, 7, 3, 4, 17), trạng thái `Xong, có bằng chứng`, người phụ trách `Kỹ sư trưởng agent`.
+
+**Tại CP4 (Nhiệm vụ D — Luật dừng trong `pilot_plan.yaml` & Mục 6 hồ sơ):**
+
+- **Viết 3 luật dừng (D3) đủ 4 vế NẾU – TRONG – THÌ – KHÔNG THÌ trong `report/team/pilot_plan.yaml`:**
+  - **Luật dừng 1 (An toàn):** Dựa trên tỉ lệ `mo_lai_trong_7_ngay` hiện tại là **4,25%** toàn mẫu (51/1.200) và **3,97%** trong phạm vi `noi_dia` + `hang_nang` (39/982) — nếu đặt ngưỡng tuyệt đối 3% thì pilot sẽ dừng ngay tuần đầu. Do đó đặt luật: *NẾU tỉ lệ mở lại 7 ngày của nhóm trợ lý cao hơn đối chứng ≥ 2 điểm, hoặc vượt trần 6% (~1,5× mức 3,97%), hoặc có ≥ 1 ca hoàn trùng hay lệch sổ cái (ca 7, ca 20) TRONG 3 ngày liên tiếp THÌ Giám đốc vận hành ra lệnh tắt trợ lý trong 15 phút và Kỹ sư trưởng agent rà trace trong 24 giờ KHÔNG THÌ không được chuyển sang bước rollout tiếp theo*.
+  - **Luật dừng 2 (Chi phí):** *NẾU chi phí mỗi việc thành công biến đổi trong phạm vi vượt **5.100 đ** (`simulated`, tương ứng kịch bản số ca làm lại tăng gấp đôi) TRONG 2 tuần liên tiếp THÌ PM trợ lý hoàn phí thu hẹp về `noi_dia` và giữ giới hạn tối đa 2 lần chạy KHÔNG THÌ không được giữ `hang_nang` trong phạm vi*.
+  - **Luật dừng 3 (Mức độ sử dụng):** *NẾU tỉ lệ bỏ qua gợi ý (`sua + bo` trên số được xem lại) vượt **40%** (~1,5× mức 27,12% của đợt chạy thử) TRONG 1 tuần THÌ Trưởng nhóm CSKH phỏng vấn 5 nhân viên và gửi báo cáo trong 3 ngày KHÔNG THÌ không được chuyển sang bước rollout tiếp theo*.
+- **Ghi Mục 6 (Pilot plan) vào `report/team/ho_so_launch_v0.md`:**
+  - Tóm tắt thiết kế chia ngẫu nhiên theo nhân viên **20 + 20** phân tầng theo depot, chỉ chạy `noi_dia` + `hang_nang`, chấp nhận mức chênh phát hiện **6 điểm** (`n = 859` mỗi nhóm, `m ≥ 299` yêu cầu/người, `DE = 6,96`) do trần `20 / 0,02 = 1.000 < 1.251`, nêu rõ con số bất lợi **power = 0,64** nếu tác động thật chỉ 5 điểm, lộ trình rollout `0.10 → 0.25 → 0.50`, 3 luật dừng và ngày quyết định `2027-01-11` (trạng thái `Xong, có bằng chứng`, phụ trách `Giám đốc vận hành LogiX-VN`).
+
+**Tại CP5 & Duyệt chéo Gate 2a (Nhiệm vụ E — Hoàn thiện `ho_so_launch_v0.md`, `phieu_cham.md` & Soát cuối):**
+
+- **Hoàn thiện đủ 7 mục và dòng Đề xuất trong `report/team/ho_so_launch_v0.md`:**
+  - Điền **Mục 4 (Chỉ số chính, dùng, an toàn)**: trong đợt chạy thử (chưa có đối chứng), chỉ số chính đạt **82,83%** (994/1.200), bỏ qua gợi ý **27,12%** (48/177), mở lại 7 ngày **4,25%** (51/1.200; **3,97%** trong phạm vi), kèm 2 chỉ số tự đề xuất và **11 event** có `trace_id` (trạng thái `Xong, có bằng chứng`, phụ trách `PM trợ lý hoàn phí`).
+  - Điền **Mục 7 (Rủi ro kinh tế)**: tổng hợp 3 rủi ro từ bảng độ nhạy (số ca làm lại gấp đôi **+51,8%** lên **6.787 đ**; xem lại 100% kéo dài lên **11.743 đ = 0,98×** hoặc **12.415 đ = 1,03×** với 15,3 phút làm lại, hoà vốn ≤ 4,8–5,1 phút; khối lượng giảm một nửa làm cố định thành **+2.370 đ/việc**, tổng **5.784 đ = 0,48×**, `simulated`; trạng thái `Giả lập`, phụ trách `PM trợ lý hoàn phí`).
+  - Chốt đề xuất cuối: **Go có điều kiện** cho phạm vi `noi_dia` + `hang_nang`, giới hạn tối đa 2 lần chạy, kèm 4 điều kiện tiên quyết có vai trò phụ trách và ngày kiểm tra cụ thể (sửa lỗi ca 7 & ca 20 trước 2026-12-04; Giám đốc vận hành ký chấp nhận MDE 6 điểm / power 0,64 trước 2026-12-04; bật đủ 11 event có `trace_id` để thay phút `simulated` bằng phút đo thật vào 2026-12-14; kế hoạch giảm xem lại theo bậc khi `sua + bo < 15%` trước 2026-12-14).
+- **Tổng hợp phiếu chấm hội đồng Gate 2a trong `report/team/phieu_cham.md` và soát toàn bộ 6 file hồ sơ:**
+  - Điền đầy đủ điểm và lý do có số liệu cho 3 tiêu chí C6, C7, C8, quyết định hội đồng, câu hỏi phản biện (về kịch bản xem lại 100% B4 và ngưỡng hoà vốn ≤ 4,8–5,1 phút) và câu trả lời tại buổi duyệt chéo trong `report/team/phieu_cham.md`.
+  - Soát toàn bộ 6 file hồ sơ trong `report/team/` (`bang_chi_phi.md`, `bang_loi.md`, `pilot_plan.yaml`, `chi_so.md`, `ho_so_launch_v0.md`, `phieu_cham.md`): đúng tên file, không còn dấu `?` ngoài chú thích, đọc được bằng `yaml.safe_load`, và không chứa từ cấm theo Quy tắc 5.
 
 ## 4. Bằng chứng
 
-- File hồ sơ tổng hợp: [report/team/ho_so_launch_v0.md](ho_so_launch_v0.md) (đã điền Mục 1, 2, 3 với đầy đủ con số, nhãn `simulated`, trạng thái `Giả lập` và vai trò phụ trách).
-- File bảng chi phí: [report/team/bang_chi_phi.md](bang_chi_phi.md) (các câu trả lời phân tích ở mục A2, A3, A4 tuân thủ quy tắc ≤ 3 dòng, có số liệu và nhãn `simulated`).
-- File chỉ số và rủi ro: [report/team/chi_so.md](chi_so.md) (bảng E2 Rủi ro kinh tế lấy số trực tiếp từ CP1 & CP2).
-- Kết quả chạy kiểm tra `python lab13.py` trong `src/` khớp 100% với các con số đã ghi vào hồ sơ.
+- File hồ sơ tổng hợp (Chủ file): [report/team/ho_so_launch_v0.md](ho_so_launch_v0.md) (đủ 7 mục và đề xuất **Go có điều kiện** kèm 4 điều kiện, đầy đủ con số, nhãn `simulated`, trạng thái `Giả lập` / `Xong, có bằng chứng` và vai trò phụ trách).
+- File phiếu chấm hội đồng Gate 2a (Chủ file): [report/team/phieu_cham.md](phieu_cham.md) (đủ bảng chấm 3 tiêu chí C6–C8 có số liệu, quyết định hội đồng, câu hỏi và câu trả lời duyệt chéo).
+- File kế hoạch pilot: [report/team/pilot_plan.yaml](pilot_plan.yaml) (mục `stop_rules` gồm 3 luật dừng đủ 4 vế NẾU – TRONG – THÌ – KHÔNG THÌ; đọc hợp lệ bằng `yaml.safe_load`, không còn dấu `?`).
+- File bảng lỗi: [report/team/bang_loi.md](bang_loi.md) (cột "Nhãn người 2" cho 20 ca lỗi đạt đồng thuận 18/20 = 90%, quy tắc phân biệt ca 6 & ca 13, và 2 dòng khắc phục Ca 4 Giới hạn hệ thống, Ca 17 Ngầm).
+- File bảng chi phí & chỉ số: [report/team/bang_chi_phi.md](bang_chi_phi.md) (câu trả lời A2, A3, A4 ≤ 3 dòng), [report/team/chi_so.md](chi_so.md) (bảng E2 Rủi ro kinh tế).
+- Kết quả chạy kiểm tra `python lab13.py` trong `src/` khớp 100% với toàn bộ con số trong hồ sơ.
 
 ## 5. Công cụ AI đã dùng
 
@@ -73,9 +94,14 @@
   - Tự kiểm tra số liệu độ nhạy ở CP2 (B1, B2, B4):
     - Tính cộng tuyến tính B2: `(4.723 − 4.472) + (6.292 − 4.472) = 251 + 1.820 = 2.071 đ` → `4.472 + 2.071 = 6.543 đ (+46,3%)`, khớp với `+5,6% + 40,7% = +46,3%`.
     - Kịch bản xem lại 100% (B4) trên `noi_dia` + `hang_nang`: `948 ca có ≥1 lần ok × 5 phút × 2.000 đ = 9.480.000 đ`; `48 ca làm lại × 9 phút × 2.000 đ = 864.000 đ`; cộng token+tool `224.513 đ` = `10.568.513 đ / 900 việc = 11.743 đ (0,98×)`. Với trung bình thực tế `15,3125 phút/ca làm lại`: `(9.480.000 + 48 × 15,3125 × 2.000 + 224.513) / 900 = 11.174.513 / 900 = 12.416 đ ≈ 12.415 đ (1,03×)`.
-  - Kiểm tra định dạng: xác nhận mọi con số có nguồn từ `phut_xem_lai_simulated` và `phut_lam_lai_simulated` đều đi kèm nhãn `simulated`, người phụ trách là một vai trò cụ thể.
+  - Kiểm tra định dạng và soát hồ sơ cuối (CP4–CP5):
+    - Kiểm tra tỉ lệ mở lại 7 ngày dùng cho luật dừng an toàn: `51 / 1.200 = 4,25%` toàn mẫu; `39 / 982 = 3,97%` trong phạm vi `noi_dia` + `hang_nang` → xác nhận ngưỡng tuyệt đối 3% không khả thi, phải dùng ngưỡng so với đối chứng (+2 điểm) và trần 6%.
+    - Chạy kiểm tra `yaml.safe_load` cho `report/team/pilot_plan.yaml` (với `PYTHONUTF8=1`) không báo lỗi, không còn dấu `?` ngoài các dòng chú thích `#`.
+    - Rà soát 7 mục trong `report/team/ho_so_launch_v0.md`: mọi mục dựa trên cột `*_simulated` (Mục 1, 2, 3, 7) đều ghi trạng thái `Giả lập`, các mục 4, 5, 6 ghi `Xong, có bằng chứng`; không có mục nào ghi người phụ trách là "cả đội"; chạy tìm kiếm xác nhận không xuất hiện từ cấm theo Quy tắc 5 trong toàn bộ `report/team/`.
 
 ## 6. Tự đánh giá
 
-- Hoàn thành đúng và đầy đủ nhiệm vụ của vai **Người giữ hồ sơ** ở CP1 (và phần liên kết sang CP2/E2): các câu trả lời A2, A3, A4 ngắn gọn (≤ 3 dòng), đi thẳng vào bản chất kinh tế của agent; Mục 1, 2, 3 trong `ho_so_launch_v0.md` có số liệu chính xác, khớp 100% với `bang_chi_phi.md`.
-- Bài học rút ra: Khi đánh giá kinh tế một AI Agent để trình duyệt Gate 2a, không được nhìn vào hoá đơn token chia đầu yêu cầu (274,7 đ) hay chỉ chia cho số ca thành công mà bỏ quên chi phí nhân viên xử lý các ca chuyển giao/làm lại. Ngoài ra, việc bóc tách chi phí theo từng phân khúc (`loai`) là bước quyết định giúp loại bỏ các phân khúc gây lỗ (`quoc_te` 1,88×) trước khi chạy pilot.
+- Hoàn thành đầy đủ nhiệm vụ của vai **Người gắn nhãn 2 kiêm giữ hồ sơ** xuyên suốt từ CP1 đến CP5 và Duyệt chéo Gate 2a: chủ trì hoàn thiện `report/team/ho_so_launch_v0.md` (7 mục + đề xuất **Go có điều kiện**) và `report/team/phieu_cham.md`, đóng góp câu trả lời A2–A4 trong `bang_chi_phi.md`, bộ nhãn độc lập 20 ca + 2 dòng khắc phục trong `bang_loi.md`, 3 luật dừng 4 vế trong `pilot_plan.yaml`, và 3 dòng rủi ro kinh tế trong `chi_so.md`.
+- Bài học rút ra:
+  - Khi đánh giá kinh tế một AI Agent để trình duyệt Gate 2a, không được nhìn vào hoá đơn token chia đầu yêu cầu (274,7 đ) hay chỉ chia cho số ca thành công mà bỏ quên chi phí nhân viên xử lý các ca chuyển giao/làm lại (giờ nhân viên chiếm 92,5% chi phí). Bóc tách chi phí theo phân khúc (`loai`) giúp loại bỏ sớm phân khúc gây lỗ (`quoc_te` 1,88×).
+  - Một hồ sơ Gate 2a thuyết phục không phải là hồ sơ che giấu điểm yếu để xin "Go", mà phải chỉ ra rõ các con số bất lợi (power giảm còn 0,64 ở mức 5 điểm khi chia 20 + 20 nhân viên; xem lại 100% làm chi phí chạm 0,98×–1,03×; các lỗi hệ thống ca 7, ca 20 và lỗi ngầm ca 17) kèm theo điều kiện tiên quyết, luật dừng định lượng và người chịu trách nhiệm rõ ràng.
